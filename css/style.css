@@ -44,6 +44,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* offset for fixed navbar */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -74,6 +75,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
+  will-change: transform;
 }
 
 .orb-1 {
@@ -674,6 +676,12 @@ footer {
   margin-top: 4px;
 }
 
+/* About CTA button */
+.about-cta {
+  margin-top: 12px;
+  display: inline-flex;
+}
+
 /* ── Scroll-reveal Animations ─────────────────────────────── */
 .fade-up {
   opacity: 0;
@@ -722,4 +730,29 @@ footer {
   .btn { text-align: center; }
   .service-card { padding: 28px 24px; }
   .about-text h2 { letter-spacing: -0.035em; }
+}
+
+/* ── Reduced Motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .orb,
+  .eyebrow::before,
+  .hero-scroll { animation: none; }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .glass-card,
+  .btn,
+  .card-link,
+  .nav-links a,
+  .footer-links a,
+  input,
+  textarea {
+    transition: none;
+  }
 }
